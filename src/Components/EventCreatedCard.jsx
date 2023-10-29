@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
-
+import Style from "./Event.module.css"
 const EventCreated = () => {
   const eventDetails = {
     event: 'Sample Event',
@@ -20,9 +20,8 @@ const EventCreated = () => {
     // Add your logic for handling the invite button click here
     alert('Invitation sent!');
   }
-
   return (
-    <Card style={styles.card}>
+    <Card className={Style.EventCard}>
       <CardContent>
         <h1 style={styles.heading}>Event Details</h1>
         <div style={styles.details}>
@@ -49,12 +48,6 @@ const EventCreated = () => {
 }
 
 const styles = {
-  card: {
-    maxWidth: '500px',
-    margin: '0 auto',
-    padding: '20px',
-    backgroundColor: '#F0F0F0',
-  },
   heading: {
     fontSize: '24px',
     margin: '0 0 20px',

@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+import Style from "./Event.module.css"
 const EventCard = () => {
   const eventDetails = {
     event: 'Sample Event',
@@ -20,7 +20,7 @@ const EventCard = () => {
   }
 
   return (
-    <Card style={styles.card}>
+    <Card className={Style.EventCard}>
       <CardContent>
         <h1 style={styles.heading}>Event Details</h1>
         <div style={styles.details}>
@@ -50,12 +50,7 @@ const EventCard = () => {
 }
 
 const styles = {
-  card: {
-    maxWidth: '500px',
-    margin: '0 auto',
-    padding: '20px',
-    backgroundColor: '#F0F0F0'
-  },
+  
   heading: {
     fontSize: '24px',
     margin: '0 0 20px',

@@ -1,8 +1,8 @@
 import { Button, Card } from "@mui/material";
 import NavBar from "./HomeNavbar";
-
+import Style from "./Event.module.css"
 const Rsvp=()=>{
-    return <div style={{background:'#F8C8C6',height:'100%',width:'100%',}}>
+    return <div className={Style.background}>
 
     <NavBar/>
    
@@ -64,6 +64,7 @@ const styles = {
     list: {
       listStyle: 'none',
       padding: '0',
+     
     },
     listItem: {
       margin: '10px 0',

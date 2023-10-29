@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import * as React from 'react';
 import { Avatar } from "@mui/material";
 import { Typography, Box } from "@mui/material";
-
+import Style from "./Event.module.css"
 const NavBar = () => {
     return (
-        <div style={{ display: 'flex', position:'fixed',width:'100%',background: '#9AA4EC', justifyContent: 'space-between', alignItems: 'center', padding: '10px',height:'80px'}}>
+        <div className={Style.NavBar}>
             <Typography variant="h6" component="div">
                 EventManagement
             </Typography>
