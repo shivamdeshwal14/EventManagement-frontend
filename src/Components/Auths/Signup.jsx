@@ -8,40 +8,42 @@ const Signup=()=> {
   const navigate=useNavigate()
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
+  const [name,setName]=useState('')
 
-//   const onLoginSubmitHandler=e=>{
-//     e.preventDefault()    
-//     alert('hello')
-//     fetch('http://localhost:4000/login',{
-//       method:"post",
-//       headers:{
-//         "Content-Type":"application/json"
-//     },
-//       body:JSON.stringify({
-//           email,
-//           password
-//       })
-//     } )
-//     .then(res=>res.json())
-//     .then(data=>
-//       {
-        
-//       if(data?.error){
-//       alert('Invalid Login Details')
-//       }else{
-        
-//       // saving token and id of user in localstorage
-//         localStorage.setItem("jwt",data.token) 
-//         // localStorage.setItem("Userid",data.uid+"")
-       
-              
-//         navigate('/Home')
-      
-   
-//       }            
+const onSignupSubmitHandler=e=>{
+  e.preventDefault()
+
+  fetch('http://localhost:4000/signup',{
+    method:"post",
+    headers:{
+      "Content-Type":"application/json"
+  },
+    body: JSON.stringify({name,email,password})
+
+  } )
+  .then((res)=>{
+    if(!res.ok){
+      throw new Error("Network not ok");
+    }
+    return res.json();
+  })
+  .then(data=>{
+    if(data.msg==='User Added Successfully')
+   {
+    alert('user created successfully')
+    // navigate('/login')
+   }
+   else{
+   alert('error')
+   }
   
-//       })
-//   }
+ 
+  })
+  .catch((error)=>{
+    console.log("Fetch error",error);
+  })
+  }
+
   
 
 
@@ -57,7 +59,7 @@ const Signup=()=> {
 
         <MDBCol col='4' md='6'>
 
-    <Form >
+    <Form onSubmit={onSignupSubmitHandler}>
 
 
           <div className="divider d-flex align-items-center my-4">
@@ -66,7 +68,7 @@ const Signup=()=> {
               
           <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"  value={email} onChange={e=>setEmail(e.target.value)}/>
           <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg" value={password} onChange={e=>setPassword(e.target.value)}/>
-         
+          <MDBInput wrapperClass='mb-4' label='Enter Name' id='formControlLg'  size="lg"  value={name} onChange={e=>setName(e.target.value)}/>
 
           <div className="d-flex justify-content-between mb-4">
             
@@ -74,8 +76,8 @@ const Signup=()=> {
           </div>
 
           <div className='text-center text-md-start mt-4 pt-2'>
-            <Button type='submit'>
-                Login
+            <Button type='submit' >
+                SignUp
             </Button>
             <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="/Signup" className="link-danger">Register</a></p>
           </div>

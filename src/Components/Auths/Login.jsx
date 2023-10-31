@@ -9,39 +9,39 @@ const Login=()=> {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
 
-//   const onLoginSubmitHandler=e=>{
-//     e.preventDefault()    
-//     alert('hello')
-//     fetch('http://localhost:4000/login',{
-//       method:"post",
-//       headers:{
-//         "Content-Type":"application/json"
-//     },
-//       body:JSON.stringify({
-//           email,
-//           password
-//       })
-//     } )
-//     .then(res=>res.json())
-//     .then(data=>
-//       {
-        
-//       if(data?.error){
-//       alert('Invalid Login Details')
-//       }else{
-        
-//       // saving token and id of user in localstorage
-//         localStorage.setItem("jwt",data.token) 
-//         // localStorage.setItem("Userid",data.uid+"")
-       
-              
-//         navigate('/Home')
-      
-   
-//       }            
   
-//       })
-//   }
+  const onLoginSubmitHandler = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:4000/login', {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data?.error) {
+          alert('Invalid Login Details');
+        } else {
+          localStorage.setItem("jwt", data.token);
+          // Navigate to the desired page after successful login
+          navigate('/Home');
+        }
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        // Handle the error, e.g., display an error message to the user
+      });
+  };
   
 
 
@@ -57,7 +57,7 @@ const Login=()=> {
 
         <MDBCol col='4' md='6'>
 
-    <Form >
+    <Form onSubmit={onLoginSubmitHandler} >
 
 
           <div className="divider d-flex align-items-center my-4">
