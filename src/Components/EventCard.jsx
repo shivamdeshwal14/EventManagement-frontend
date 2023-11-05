@@ -42,9 +42,9 @@ const EventCard= ({ event }) => {
       });
   }
   return (
-    <Card className={Style.EventCard} style={{ background: 'white' }}>
+    <Card className={Style.EventCard} style={{ background: 'white',borderRadius:'25px' }}>
       <CardContent>
-        <h1 style={styles.heading}>you are invited </h1>
+        <h1 style={styles.heading}>You are invited </h1>
         <div style={styles.details}>
           <p><strong>Event:</strong> {event ? event.eventname : "Loading"}</p>
           <p><strong>Venue:</strong> {event ? event.venue : "Loading"}</p>
@@ -53,7 +53,7 @@ const EventCard= ({ event }) => {
           <p><strong>Description:</strong> {event ? event.description : "Loading"}</p>
         </div>
         <div style={{display:'flex',justifyContent:'space-between'}}>
-        <Button style={{background:'#9269E1',height:'45px',width:'100px',color:'black'}} onClick={onReply}>
+        <Button style={{background:'#EEA1A7',height:'45px',width:'100px',color:'black'}} onClick={onReply}>
           Send Reply
         </Button>
         <TextField style={{border:'2px solid black',fontSize: '16px'}}
@@ -63,16 +63,15 @@ const EventCard= ({ event }) => {
         inputProps={{ style: { fontSize: '16px' } }}
        > </TextField>
         </div>
-
       </CardContent>
     </Card>
   );
 }
-
 const styles = {
   heading: {
     fontSize: '24px',
     margin: '0 0 20px',
+    
     
   },
   details: {

@@ -16,10 +16,6 @@ import ButtonStyle from "./Buttons.module.css"
 
 const Home=()=>{
 
-
-
-
-
 // My invitation
 const [myinvites,setMyinvites]=useState([])
 
@@ -96,8 +92,8 @@ const [eventDetails,setEvent]=useState([]);
         
           
           
-          <Button className={ButtonStyle.button}  type="submit"   size="large">
-            <Link style={{fontSize:'14px',color:'black'}} to='/CreateEvent' >
+          <Button className={ButtonStyle.button} style={{background:'white',marginTop:'20px'}}  type="submit"   size="large">
+            <Link style={{fontSize:'24px',color:'black'}} to='/CreateEvent' >
               Create A New Event
             </Link>
           </Button>
