@@ -1,9 +1,10 @@
 // Guest.jsx
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import NavBar from './HomeNavbar';
 import { Card } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 const guestsData = [
   { name: 'John Doe', phone: '123-456-7890', email: 'john@example.com' },
@@ -16,10 +17,74 @@ const guestsData = [
 ];
 
 const Guest = () => {
-  const handleInviteClick = () => {
-    // Add your logic for handling the invite button click here
-    alert('Invitation sent!');
-  }
+// fetching event id from home page
+const location=useLocation()
+
+const params = new URLSearchParams(location.search);
+const id = params.get('id');
+
+
+
+
+const onInvite=(uid)=>{
+ 
+
+  fetch(`http://localhost:4000/invite/${uid}/${id}`,{
+    method:"put",
+    headers:{
+      "Content-Type":"application/json",
+      "Authorization":"Bearer "+localStorage.getItem("jwt")
+  },  
+    })
+  .then((res)=>{
+    if(!res.ok){
+      throw new Error("Network not ok");
+    }
+    return res.json();
+  })
+  .then(data=>{
+
+  console.log(data);
+  alert("Invitation sent")
+  })
+  .catch((error)=>{
+    console.log("Fetch error",error);
+    alert("Not sent")
+  })
+}
+
+const[guestData,setGuestData]=useState([])
+// console.log(guestData);
+
+
+
+
+
+  // fetching all guestss
+  useEffect(()=>{
+
+    fetch('http://localhost:4000/alluser',{
+      method:"get",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer "+localStorage.getItem("jwt")
+    },  
+      })
+    .then((res)=>{
+      if(!res.ok){
+        throw new Error("Network not ok");
+      }
+      return res.json();
+    })
+    .then(data=>{
+
+      setGuestData(data)
+      
+    })
+    .catch((error)=>{
+      console.log("Fetch error",error);
+    })
+  },[])
 
   return <div style={{background:'#F8C8C6',height:'100%',width:'100%',}}>
 
@@ -28,19 +93,23 @@ const Guest = () => {
     <div style={styles.guestContainer}>
       <h1 style={styles.heading}>Guest List</h1>    
       <ul style={styles.list}>
-        {guestsData.map((guest, index) => (
-          <Card style={styles.card}>
-          <li key={index} style={styles.listItem}>
-            <strong>Name:</strong> {guest.name} <br />
-            <strong>Phone:</strong> {guest.phone} <br />
-            <strong>Email:</strong> {guest.email}<br/>
-            <Button variant="contained" color="primary" onClick={handleInviteClick} style={styles.button}>
-        Invite
-      </Button>
-          </li>
-          
-        </Card>
-        ))}
+        
+      {guestData.map((guest, index) => {
+  if (guest._id !== localStorage.getItem("userid")) {
+    return (
+      <Card style={styles.card} key={index}>
+        <li style={styles.listItem}>
+          <strong>Name:</strong> {guest.name} <br />
+          <strong>Email:</strong> {guest.email}<br/>
+          <Button variant="contained" color="primary" onClick={() => onInvite(guest._id)} style={styles.button}>
+            Invite
+          </Button>
+        </li>
+      </Card>
+    );
+  }
+  return null; // or you can use an empty fragment <> </>
+})}
       </ul>
       
       

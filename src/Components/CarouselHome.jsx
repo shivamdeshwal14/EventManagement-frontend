@@ -6,9 +6,7 @@ const CarouselHome=()=>{
     <Carousel.Item>
     <Row>
       <Col lg={4} sm={3} xs={12}>
-        
-      
-        <img style={{height:'350px'}} src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
+              <img style={{height:'350px'}} src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
       </Col>
       <Col lg={4} sm={3} xs={12}>
       <img height={'350px'} src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGV2ZW50JTIwZWR1Y2F0aW9ufGVufDB8fDB8fHww"></img>

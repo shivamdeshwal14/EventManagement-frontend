@@ -43,12 +43,7 @@ const onSignupSubmitHandler=e=>{
     console.log("Fetch error",error);
   })
   }
-
-  
-
-
-
-  return (
+ return (
     <MDBContainer fluid className="p-3 my-5 h-custom">
 
       <MDBRow>

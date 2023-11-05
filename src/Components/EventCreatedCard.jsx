@@ -1,47 +1,39 @@
-
 import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import { Link } from 'react-router-dom';
+// import Button from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom';
 import Style from "./Event.module.css"
-const EventCreated = () => {
-  const eventDetails = {
-    event: 'Sample Event',
-    venue: 'Event Venue',
-    date: '2023-10-31',
-    time: '12:00 PM',
-    description: 'This is a sample event description.',
-    organiser: 'John Doe',
-  };
 
-  const handleInviteClick = () => {
-    // Add your logic for handling the invite button click here
-    alert('Invitation sent!');
-  }
+const EventCreated = ({ event }) => {
+  const id=event._id;
+ 
   return (
-    <Card className={Style.EventCard}>
+    <Card className={Style.EventCard} style={{ background: 'white' }}>
       <CardContent>
         <h1 style={styles.heading}>Event Details</h1>
         <div style={styles.details}>
-          <p><strong>Event:</strong> {eventDetails.event}</p>
-          <p><strong>Venue:</strong> {eventDetails.venue}</p>
-          <p><strong>Date:</strong> {eventDetails.date}</p>
-          <p><strong>Time:</strong> {eventDetails.time}</p>
-          <p><strong>Description:</strong> {eventDetails.description}</p>
-          <p><strong>Organiser:</strong> {eventDetails.organiser}</p>
+          <p><strong>Event:</strong> {event ? event.eventname : "Loading"}</p>
+          <p><strong>Venue:</strong> {event ? event.venue : "Loading"}</p>
+          <p><strong>Date:</strong> {event ? event.date : "Loading"}</p>
+          <p><strong>Time:</strong> {event ? event.time : "Loading"}</p>
+          <p><strong>Description:</strong> {event ? event.description : "Loading"}</p>
         </div>
-        <Button>
-          <Link  to='/Guest'>
-            Invite Guests
+        <div style={{display:'flex',justifyContent:'space-between'}}>
+        <Button style={{background:'#9269E1'}}>
+          <Link to={`/Guest?id=${id}`} style={{color:'black',fontSize:'13px',fontWeight:'bold'}}>
+            Invite
           </Link>
         </Button>
-        <Button>
-          <Link  to='/rsvp'>
+        <Button style={{background:'#EEA1A7'}}>
+          <Link to={`/rsvp?id=${id}`} style={{color:'black',fontSize:'13px',fontWeight:'bold'}}>
             RSVPs
+            
           </Link>
         </Button>
+        </div>
+
       </CardContent>
     </Card>
   );

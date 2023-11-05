@@ -6,11 +6,53 @@ import Row from 'react-bootstrap/Row';
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import Style from "./Event.module.css"
+import { useState } from "react";
+// use states
+
+
 const CreateEvent=()=>{
+const[eventname,setEventname]=useState('');
+const [venue,setVenue]=useState('');
+const[date,setDate]=useState('');
+const[time,setTime]=useState('');
+const[description,setDescription]=useState('');
+
+// function for creating time
+const onCreateEvent=e=>{
+  e.preventDefault()
+  fetch('http://localhost:4000/createEvent',{
+    method:"post",
+    headers:{
+      "Content-Type":"application/json",
+      "Authorization":"Bearer "+localStorage.getItem("jwt")
+  },
+    body: JSON.stringify({eventname,date,time,venue,description})
+
+  })
+  .then((res)=>{
+    if(!res.ok){
+      throw new Error("Network not ok");
+    }
+    return res.json();
+  })
+  .then(data=>{
+ 
+   alert("event created succesfully") 
+   setEventname("");
+   setDate("")
+   setVenue("")
+   setDescription("")
+   setTime(" ");
+   
+  })
+  .catch((error)=>{
+    console.log("Fetch error",error);
+  })
+  }
     return<div className={Style.background}>
         <NavBar/>
         <div  style={{margin:'100px'}} >
-          <Form>
+          <Form onSubmit={onCreateEvent}>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
               <Form.Label column sm="2">
                 <strong>
@@ -19,7 +61,7 @@ const CreateEvent=()=>{
                 
               </Form.Label>
               <Col sm="10">
-                <Form.Control   placeholder="Name of Event" />
+                <Form.Control  value={eventname} onChange={e=>setEventname(e.target.value)} placeholder="Name of Event" />
               </Col>
             </Form.Group>
 
@@ -31,7 +73,7 @@ const CreateEvent=()=>{
               
               </Form.Label>
               <Col sm="10">
-                <Form.Control  placeholder="Venue " />
+                <Form.Control  value={venue} onChange={e=>setVenue(e.target.value)} placeholder="Venue " />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -42,7 +84,7 @@ const CreateEvent=()=>{
               
               </Form.Label>
               <Col sm="10">
-                <Form.Control type="date" placeholder="Date of event " />
+                <Form.Control type="date"  value={date} onChange={e=>setDate(e.target.value)} placeholder="Date of event " />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -53,7 +95,7 @@ const CreateEvent=()=>{
                 
               </Form.Label>
               <Col sm="10">
-                <Form.Control type="time" placeholder="Time " />
+                <Form.Control type="time" value={time} onChange={e=>setTime(e.target.value)} placeholder="Time " />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -64,25 +106,21 @@ const CreateEvent=()=>{
               
               </Form.Label>
               <Col sm="10">
-                <Form.Control  placeholder="Description of Venue " />
+                <Form.Control  value={description} onChange={e=>setDescription(e.target.value)} placeholder="Description of Venue " />
               </Col>
             </Form.Group>
-            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-              <Form.Label column sm="2"><strong>
-              Organiser
-              </strong>
-              
-              </Form.Label>
-              <Col sm="10">
-                <Form.Control  placeholder="Name of organiser " />
-              </Col>
-            </Form.Group>
+            
             <Button type="submit" variant="contained">
-              <Link to='/' style={{color:'black'}}>
-                Create Event
+             Create Event
+                </Button>
+          </Form>
+          <br/>
+        
+          <Button type="submit" variant="contained">
+            <Link to='/Home' style={{color:'black'}}>
+                 Home Page 
               </Link>
             </Button>
-          </Form>
 
         </div>
 

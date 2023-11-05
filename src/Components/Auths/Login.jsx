@@ -9,7 +9,7 @@ const Login=()=> {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
 
-  
+  // login function
   const onLoginSubmitHandler = (e) => {
     e.preventDefault();
     fetch('http://localhost:4000/login', {
@@ -32,7 +32,9 @@ const Login=()=> {
         if (data?.error) {
           alert('Invalid Login Details');
         } else {
+        
           localStorage.setItem("jwt", data.token);
+          localStorage.setItem("userid",data.id)
           // Navigate to the desired page after successful login
           navigate('/Home');
         }

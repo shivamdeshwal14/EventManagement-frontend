@@ -1,59 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+// import Button from 'react-bootstrap'
+import { Form, Link, useNavigate } from 'react-router-dom';
 import Style from "./Event.module.css"
-const EventCard = () => {
-  const eventDetails = {
-    event: 'Sample Event',
-    venue: 'Event Venue',
-    date: '2023-10-31',
-    time: '12:00 PM',
-    description: 'This is a sample event description.',
-    organiser: 'John Doe',
-  };
+import { TextField } from '@mui/material';
 
-  const handleInviteClick = () => {
-    // Add your logic for handling the invite button click here
-    alert('Invitation sent!');
+const EventCard= ({ event }) => {
+  const id=event._id;
+  const[replyText,setReplyText]=useState('')
+  
+  const onReply=()=>{
+   fetch(`http://localhost:4000/reply/${id}`, {
+     method: "put",
+     headers: {
+       "Content-Type": "application/json",
+       "Authorization":"Bearer " +localStorage.getItem("jwt")
+     },
+     body: JSON.stringify({
+       replyText
+     }),
+   })
+     .then((res) => {
+       if (!res.ok) {
+         throw new Error("Network response was not ok");
+       }
+       return res.json();
+     })
+     .then((data) => {
+       if (data?.error) {
+         alert('Error');
+       } else {
+       
+       alert("Replied")
+       setReplyText("")
+       }
+     })
+     .catch((error) => {
+       console.error("Fetch error:", error);
+      });
   }
-
   return (
-    <Card className={Style.EventCard}>
+    <Card className={Style.EventCard} style={{ background: 'white' }}>
       <CardContent>
-        <h1 style={styles.heading}>Event Details</h1>
+        <h1 style={styles.heading}>you are invited </h1>
         <div style={styles.details}>
-          <p><strong>Event:</strong> {eventDetails.event}</p>
-          <p><strong>Venue:</strong> {eventDetails.venue}</p>
-          <p><strong>Date:</strong> {eventDetails.date}</p>
-          <p><strong>Time:</strong> {eventDetails.time}</p>
-          <p><strong>Description:</strong> {eventDetails.description}</p>
-          <p><strong>Organiser:</strong> {eventDetails.organiser}</p>
+          <p><strong>Event:</strong> {event ? event.eventname : "Loading"}</p>
+          <p><strong>Venue:</strong> {event ? event.venue : "Loading"}</p>
+          <p><strong>Date:</strong> {event ? event.date : "Loading"}</p>
+          <p><strong>Time:</strong> {event ? event.time : "Loading"}</p>
+          <p><strong>Description:</strong> {event ? event.description : "Loading"}</p>
         </div>
-        <TextField
-          label="Reply"
-          variant="outlined"
-          fullWidth
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleInviteClick}
-          style={styles.button}
-        >
-          Reply
+        <div style={{display:'flex',justifyContent:'space-between'}}>
+        <Button style={{background:'#9269E1'}} onClick={onReply}>
+          
         </Button>
+        <TextField style={{border:'2px solid black'}}
+        label="Enter Text"
+        variant="outlined"
+        value={replyText}
+        onChange={e=>setReplyText(e.target.value)}
+       > </TextField>
+        </div>
+
       </CardContent>
     </Card>
   );
 }
 
 const styles = {
-  
   heading: {
     fontSize: '24px',
     margin: '0 0 20px',
+    
   },
   details: {
     marginBottom: '20px',
