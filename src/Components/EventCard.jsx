@@ -53,14 +53,14 @@ const EventCard= ({ event }) => {
           <p><strong>Description:</strong> {event ? event.description : "Loading"}</p>
         </div>
         <div style={{display:'flex',justifyContent:'space-between'}}>
-        <Button style={{background:'#9269E1'}} onClick={onReply}>
-          
+        <Button style={{background:'#9269E1',height:'45px',width:'100px',color:'black'}} onClick={onReply}>
+          Send Reply
         </Button>
-        <TextField style={{border:'2px solid black'}}
-        label="Enter Text"
+        <TextField style={{border:'2px solid black',fontSize: '16px'}}
         variant="outlined"
         value={replyText}
         onChange={e=>setReplyText(e.target.value)}
+        inputProps={{ style: { fontSize: '16px' } }}
        > </TextField>
         </div>
 

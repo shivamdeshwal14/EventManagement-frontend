@@ -47,27 +47,35 @@ const Login=()=> {
   
 
 
+  return <div style={{position:'fixed',width:'100%',height:'100%'}}>
+              <div style={{display:'flex',background:'white',height:'80px',width:'100%',justifyContent:'space-between'}}>
+                        <div style={{display:'flex'}}>
+                          <img height={'80px'} src="https://www.shutterstock.com/image-vector/people-holding-handslogo-management-consultation-260nw-631175897.jpg" alt="" />
+                          <h3 style={{fontFamily:'fantasy',marginLeft:'10px'}}>EventManagement</h3>
+                        </div>
+                        <div style={{display:'flex'}}>
+                         <h3 style={{fontFamily:'cursive'}}> Your Vision, Our Expertise</h3>
+                        </div>
 
-  return (
-    <MDBContainer fluid className="p-3 my-5 h-custom">
-
+              </div>
+   <div style={{border:'2px solid black',marginTop:'4rem',borderRadius:'20px'}} className='container'>
+     <MDBContainer fluid className="p-3 my-5 h-custom">
       <MDBRow>
 
-        <MDBCol col='10' md='6'>
-          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGV2ZW50fGVufDB8fDB8fHww" class="img-fluid" alt="Sample image" />
+        <MDBCol col='10' md='6' style={{padding:'20px'}}>
+          <img style={{borderRadius:'20px'}} src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGV2ZW50fGVufDB8fDB8fHww" class="img-fluid" alt="Sample image" />
         </MDBCol>
 
         <MDBCol col='4' md='6'>
 
     <Form onSubmit={onLoginSubmitHandler} >
-
-
           <div className="divider d-flex align-items-center my-4">
-            <h2 className="text-center fw-bold mx-3 mb-0">Login</h2>
+            <h2 className="text-center fw-bold mx-3 mb-0" style={{fontFamily:'cursive'}}>Login</h2>
           </div>
-              
-          <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"  value={email} onChange={e=>setEmail(e.target.value)}/>
-          <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg" value={password} onChange={e=>setPassword(e.target.value)}/>
+          <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"  value={email} onChange={e=>setEmail(e.target.value)} placeholder='Enter Your Email id'/>
+          <br/>
+          <br/>
+          <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg" value={password} onChange={e=>setPassword(e.target.value)} placeholder='Enter Your Password'/>
          
 
           <div className="d-flex justify-content-between mb-4">
@@ -79,6 +87,8 @@ const Login=()=> {
             <Button type='submit'>
                 Login
             </Button>
+           <br/>
+           <br/>
             <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="/Signup" className="link-danger">Register</a></p>
           </div>
           </Form>
@@ -87,7 +97,7 @@ const Login=()=> {
 
       </MDBRow>
 
-      <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+      {/* <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
 
         <div className="text-white mb-3 mb-md-0" >
           Copyright © 2023. All rights reserved.
@@ -98,10 +108,12 @@ const Login=()=> {
          
         </div>
 
-      </div>
+      </div> */}
 
     </MDBContainer>
-  ); 
+    </div>
+      
+    </div>
 }
 
 export default Login

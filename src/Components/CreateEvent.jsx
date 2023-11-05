@@ -51,20 +51,19 @@ const onCreateEvent=e=>{
   }
     return<div className={Style.background}>
         <NavBar/>
-        <div  style={{margin:'100px'}} >
+        <div  style={{margin:'100px',marginTop:'150px'}} >
           <Form onSubmit={onCreateEvent}>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
               <Form.Label column sm="2">
                 <strong>
                 Name of Event
                 </strong>
-                
               </Form.Label>
               <Col sm="10">
                 <Form.Control  value={eventname} onChange={e=>setEventname(e.target.value)} placeholder="Name of Event" />
               </Col>
             </Form.Group>
-
+            <br/>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
               <Form.Label column sm="2">
                 <strong>
@@ -72,10 +71,12 @@ const onCreateEvent=e=>{
                 </strong>
               
               </Form.Label>
+             
               <Col sm="10">
                 <Form.Control  value={venue} onChange={e=>setVenue(e.target.value)} placeholder="Venue " />
               </Col>
             </Form.Group>
+            <br/>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
               <Form.Label column sm="2">
                 <strong>
@@ -87,6 +88,7 @@ const onCreateEvent=e=>{
                 <Form.Control type="date"  value={date} onChange={e=>setDate(e.target.value)} placeholder="Date of event " />
               </Col>
             </Form.Group>
+            <br/>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
               <Form.Label column sm="2">
                 <strong>
@@ -98,6 +100,7 @@ const onCreateEvent=e=>{
                 <Form.Control type="time" value={time} onChange={e=>setTime(e.target.value)} placeholder="Time " />
               </Col>
             </Form.Group>
+            <br/>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
               <Form.Label column sm="2">
                 <strong>
@@ -109,14 +112,14 @@ const onCreateEvent=e=>{
                 <Form.Control  value={description} onChange={e=>setDescription(e.target.value)} placeholder="Description of Venue " />
               </Col>
             </Form.Group>
-            
-            <Button type="submit" variant="contained">
+            <br/>
+            <Button type="submit" variant="contained" style={{fontWeight:'bold',color:'black',background:'#9269E1',height:'45px',width:'120px'}}>
              Create Event
                 </Button>
           </Form>
           <br/>
         
-          <Button type="submit" variant="contained">
+          <Button type="submit" variant="contained" style={{fontWeight:'bold',color:'black',background:'#9269E1',height:'45px',width:'120px'}}  >
             <Link to='/Home' style={{color:'black'}}>
                  Home Page 
               </Link>

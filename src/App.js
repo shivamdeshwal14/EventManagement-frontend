@@ -7,7 +7,6 @@ import {Route, Router, Routes} from 'react-router-dom'
 import Login from './Components/Auths/Login';
 import Signup from './Components/Auths/Signup';
 import Rsvp from './Components/Rsvp';
-import NewLogin from './Components/Auths/NewLogin';
 
 
 const App=()=>{
@@ -20,7 +19,7 @@ const App=()=>{
     <Route path='/Guest' element={<Guests/>}></Route>
     <Route path='/' element={<Login/>}></Route>
     <Route path='/rsvp' element={<Rsvp/>}></Route>
-    <Route path='/newlogin' element={<NewLogin/>}></Route>
+  
     <Route path='/Signup' element={<Signup/>}></Route>
   </Routes> 
  
