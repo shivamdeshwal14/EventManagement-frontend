@@ -58,7 +58,7 @@ const onSignupSubmitHandler=e=>{
                       <MDBRow>
 
                         <MDBCol col='10' md='6' style={{padding:'20px'}}>
-                          <img  style={{borderRadius:'20px'}}  src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGV2ZW50fGVufDB8fDB8fHww" class="img-fluid" alt="Sample image" />
+                          <img  style={{borderRadius:'20px',width:'500px',maxHeight:'400px'}}  src="https://img.freepik.com/free-vector/you-are-invited-our-grand-opening-invitation-card-template_53876-119181.jpg?size=626&ext=jpg&ga=GA1.1.657913657.1695548141&semt=ais" class="img-fluid" alt="Sample image" />
                         </MDBCol>
 
                         <MDBCol col='4' md='6'>

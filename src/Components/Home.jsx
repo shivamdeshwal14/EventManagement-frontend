@@ -92,7 +92,7 @@ const [eventDetails,setEvent]=useState([]);
         
           
           
-          <Button className={ButtonStyle.button} style={{background:'white',marginTop:'20px'}}  type="submit"   size="large">
+          <Button className={ButtonStyle.button} style={{background:'white',marginTop:'20px',border:'1px solid black'}}  type="submit"   size="large">
             <Link style={{fontSize:'24px',color:'black'}} to='/CreateEvent' >
               Create A New Event
             </Link>

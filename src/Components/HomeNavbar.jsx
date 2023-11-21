@@ -36,7 +36,7 @@ React.useEffect(()=>{
         <div className={Style.NavBar}>
             <div style={{display:'flex'}}>
                 <img height={'80px'} src="https://www.shutterstock.com/image-vector/people-holding-handslogo-management-consultation-260nw-631175897.jpg" alt="" />
-                <h3 style={{fontFamily:'fantasy',marginLeft:'10px'}}>EventManagement</h3>
+                <h3 style={{fontFamily:'fantasy',marginLeft:'10px'}}>SpectraPlan</h3>
              </div>
                 <div style={{display:'flex'}}>
                     <h3 style={{fontFamily:'cursive'}}> Your Vision, Our Expertise</h3>

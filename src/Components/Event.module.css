@@ -10,7 +10,7 @@
     bottom: 0;
     margin: 0;
     overflow: auto;
-    background-image: url('https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/62155801e7019121bfda4521_Color%20Schemes-p-2000.jpeg'); 
+    background-image: url('https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); 
     background-size: cover;/* Adjust the image size to cover the div*/
     background-position: center; /* Center the image within the div */
   }
@@ -18,14 +18,12 @@
   .EventCard {
     max-width: 500px;
     margin: 0 auto;
-    
     background: rgba(17, 16, 17, 0.5); /* Background with reduced opacity */
-    border: 2px solid rgb(91, 132, 228);
-    border-radius: 50px; /* Reduced border radius for a softer look */
+    border: 2px solid rgb(6, 6, 6);
+    border-radius: 50px; 
     margin-bottom: 20px;
-    opacity: 0.8;
-    /* align-items: center; */
-    /* transition: background 0.3s, transform 0.3s; */
+    opacity: 1;
+   
   }
   
   .EventCard:hover {
@@ -50,8 +48,7 @@
    
     height: 100%; /* Set a height for the div (you can adjust this) */
     width: 100%; /* Set the width to 100% to cover the full width of the parent container */
-  
-    /* Add other styles as needed */
+      /* Add other styles as needed */
     color: white; /* Example text color on top of the image */
     text-align: center; /* Center align text on the image */
     padding: 20px; /* Add padding to the content inside the div */

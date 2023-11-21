@@ -10,7 +10,6 @@ import { TextField } from '@mui/material';
 const EventCard= ({ event }) => {
   const id=event._id;
   const[replyText,setReplyText]=useState('')
-  
   const onReply=()=>{
    fetch(`http://localhost:4000/reply/${id}`, {
      method: "put",
@@ -53,7 +52,7 @@ const EventCard= ({ event }) => {
           <p><strong>Description:</strong> {event ? event.description : "Loading"}</p>
         </div>
         <div style={{display:'flex',justifyContent:'space-between'}}>
-        <Button style={{background:'#EEA1A7',height:'45px',width:'100px',color:'black'}} onClick={onReply}>
+        <Button style={{border:'1px solid black',background:'#EEA1A7',height:'45px',width:'100px',color:'black'}} onClick={onReply}>
           Send Reply
         </Button>
         <TextField style={{border:'2px solid black',fontSize: '16px'}}

@@ -63,7 +63,7 @@ const Login=()=> {
       <MDBRow>
 
         <MDBCol col='10' md='6' style={{padding:'20px'}}>
-          <img style={{borderRadius:'20px'}} src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGV2ZW50fGVufDB8fDB8fHww" class="img-fluid" alt="Sample image" />
+          <img style={{borderRadius:'20px',width:'500px'}} src="https://img.freepik.com/free-vector/modern-event-banner-template-with-degrade-background_1361-2219.jpg?size=626&ext=jpg&ga=GA1.1.1880011253.1700524800&semt=ais" class="img-fluid" alt="Sample image" />
         </MDBCol>
 
         <MDBCol col='4' md='6'>
